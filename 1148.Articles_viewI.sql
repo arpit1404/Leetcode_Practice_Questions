@@ -43,10 +43,7 @@
 -- | 4    |
 -- | 7    |
 -- +------+
-
-With count1 as(Select v.author_id as id from views v where v.author_id = v.viewer_id group by v.author_id having count(v.author_id) > 1)
-, single as (Select v.author_id as id from views v where v.author_id = v.viewer_id)
-
-Select * from count1
-union 
-Select * from single
+SELECT DISTINCT author_id AS id
+FROM Views
+WHERE author_id = viewer_id
+ORDER BY id ASC;
